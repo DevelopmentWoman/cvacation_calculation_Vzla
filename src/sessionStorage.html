@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <input type="text" id="usuario">
+        <button id="crear">Crear</button>
+    </div>
+
+    <button id="mostrar">Mostrar</button>
+    <button id="modificar">Modificar</button>
+    <button id="borrar">Logout</button>
+</body>
+
+<script>
+    $input = document.getElementById("usuario")
+
+    document.addEventListener("DOMContentLoaded", e=>{
+        // if (localStorage.getItem("usuario")){
+        //     $input.value = localStorage.getItem("usuario")   
+        // }
+
+    })
+
+    function crear(value){
+        document.cookie = `usuario=${value}; expires= Thu, 26 Oct 2023 12:00:00 UTC; path=/;`;
+        // localStorage.setItem("usuario", $input.value)           
+    }
+
+    function mostrar(){
+        document.cookie.
+        // $input.value = localStorage.getItem("usuario")           
+    }
+
+    function borrar(){
+        // localStorage.removeItem("usuario")
+        // $input.value = ""
+    }
+
+    document.addEventListener("click", e =>{
+        if (e.target.matches("#crear")){
+            crear($input.value)
+        }
+        if (e.target.matches("#mostrar")){
+            mostrar()
+        }
+        if (e.target.matches("#modificar")){
+            crear($input.value)
+        }
+        if (e.target.matches("#borrar")){
+            borrar($input.value)
+        }       
+        
+
+        
+    })
+</script>
+</html>

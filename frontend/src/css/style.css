@@ -1,76 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,700;1,600&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Roboto:wght@300;400;500;700&display=swap');
 
+*:root{
+    --clr-base: #315ef5;
+    --clr-base1: #a3c0fffa;
+    --clr-bas-light: #ffffff;
+    --clr-title: #000000e5;
+}
 
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
+body{
+    font-family: 'Cormorant Garamond', serif;
+    /* font-family: 'Inter', sans-serif;
+    font-family: 'Roboto', sans-serif; */
+}
 
 .container{
 
     height: 100vh;
-    width: 100%;
-    /* background-color: rgb(49, 94, 245); */
     background: rgb(244,245,245);
-background: linear-gradient(0deg, rgba(244,245,245,1) 25%, rgba(149,177,242,0.24693627450980393) 62%, rgba(49,94,245,0.2721463585434174) 85%);
-    z-index: -1;
+    background: linear-gradient(0deg, rgba(244,245,245,1) 25%, rgba(149,177,242,0.24693627450980393) 62%, rgba(49,94,245,0.2721463585434174) 85%);
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
 }
 
 .container-login{
     position: relative;
     height: 80%;
     width:80%;
-    /* display: flex;
-    align-items: center;
-    justify-content: center; */
-    background-color: white;
+    background-color: var(--clr-bas-light);
     border-radius: 50px;
-    box-shadow: 0px 13px 17px -6px rgba(0,0,0,0.75);
--webkit-box-shadow: 0px 13px 17px -6px rgba(0,0,0,0.75);
--moz-box-shadow: 0px 13px 17px -6px rgba(0,0,0,0.75);
-    /* overflow-y: hidden; */
-
-
-}
-.container-bg-login{
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    /* display: flex;
-    justify-content: center;
-    align-items: center; */
-    /* height: 100%; 
-    width: 120%; */
-    /* z-index: -1; */
     background-image: url(../img/bg_login.svg);
     background-size: cover;
+    box-shadow: 0px 13px 17px -6px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 0px 13px 17px -6px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 13px 17px -6px rgba(0,0,0,0.75);
+
 }
 .cont_plane{
-    
-    /* top: 5rem; */
     height: 100%; 
     width: 100%;
-    /* z-index: -1; */
 }
 
-.cont_plane>img{
+.cont_plane>svg{
     position: absolute;
     top: 10%;
-    right: -15%;
+    right: -25%;
     width: 70%;
     height: 70%;
+    animation-name: take-off-plane, start-plane;
+    animation-duration: 1s, 1s;
+    animation-fill-mode: both;
+    animation-direction: alternate,normal;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite,1;
+
+}
+
+#rect83, #rect83-1, #rect83-7, #rect83-9{
+    opacity: 0;
+    clip-path: polygon(100% 0, 0 0, 0 100%, 100% 100%);    
+    animation: take-off 1s infinite both alternate;
 }
 
 
 
-form{
+#frm-login{
     position: absolute;
     top: 10%;
-    left: 25%;
-    /* padding: 2rem; */
+    left: 35%;
     height: 80%;
     width: 30%;
     display: flex;
@@ -78,25 +81,127 @@ form{
     justify-content: center;
     align-items: center;
     gap: 1rem;
-    /* background-color: rgba(255, 255, 255, 0.1); */
-     /* background-color: rgba(255, 255, 255, 0.5);*/
-    /* backdrop-filter: blur(2rem);   */
-    /*border-radius: 50%; */
+    clip-path: polygon(100% 0, 0 0, 0 100%, 100% 100%);
+    animation: show-form 3s 1s both;
+    transition: all 1s ease-in-out;
 }
-form>h1{
+#frm-login>h1{
     text-align: center;
+    margin-bottom: 1rem;
+    font-size: 2.1rem;
+    color: rgba(0, 0, 0, 0.899);
 }
 
 .cont-name, .cont-pass{
     width: 100%;
 }
 
-label{
+
+#frm-login>div>input{
     display: block;
+    width: 100%;
+    height: 3rem;
+    padding: 0 1rem;
+    border: none;
+    border-bottom: 2px solid var(--clr-base1);
+    transition: all .2s linear;
+    font-family: 'Roboto', sans-serif;    
+}
+
+.cont-name, .cont-pass{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 
-input{
-    display: block;
+.cont-name::before, .cont-pass::before{
+    position: absolute;
+    right: 1rem;
+    width: 1rem;
+    height: 1rem;    
+}
+
+.cont-name::before{
+    content: url("../img/user.svg");
+}
+.cont-pass::before{
+    content: url("../img/lock.svg");
+}
+
+
+
+#frm-login>div>input:hover{
+    border-bottom: 4px solid #86ac81;    
+    cursor: pointer;
+
+}
+
+#frm-login>button{
     width: 100%;
+    margin-top: 1.5rem;
+    padding: .8rem;
+    border: none;
+    background: var(--clr-base1);
+    color: var(--clr-bas-light);
+    font-size: 1rem;
+    font-weight: 700;
+    transition: all .5s ease-in-out;
+}
+
+#frm-login>button:hover{
+    cursor: pointer;
+    background-color: var(--clr-base);
+    padding: .9rem;
+}
+
+#frm-login input:focus{
+    outline: none;    
+}
+
+
+@keyframes take-off {
+    to{
+        opacity: 1;
+        /* clip-path: polygon(100% 0, 0 0, 0 100%, 100% 100%); */
+    }
+    from{
+        opacity: 0;
+        /* clip-path: polygon(0 0, 0 0, 0 100%, 0 100%); */
+    }
+}
+@keyframes take-off-plane {
+    to{
+        /* opacity: 0; */
+        transform: translateY(-.5rem) translateX(0);
+    }
+    from{
+        /* opacity: 1; */
+        transform: translateY(0) translate(-.5rem);
+    }
+}
+
+@keyframes start-plane {
+    to{
+        top: 10%;
+        right: -25%;
+
+    }
+    from{
+        top: 100%;
+        right: 100%;
+
+    }
+}
+
+@keyframes show-form {
+    to{
+        clip-path: polygon(100% 0, 0 0, 0 100%, 100% 100%);
+        
+    }
+    from{
+        
+        clip-path: polygon(100% 0, 0 0, 0 0, 100% 0);
+    }
+    
 }
